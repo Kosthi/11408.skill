@@ -14,7 +14,8 @@ description: >-
   极限计算、中值定理证明、二重积分、级数收敛、傅里叶级数、
   常微分方程、矩阵对角化、特征值特征向量、最大似然估计.
   Also trigger when the user mentions: 考研、408、11408、数学一、专业课、
-  真题解析、知识点辨析、错题分析、薄弱环节、备考规划、刷题策略、考频.
+  真题解析、知识点辨析、错题分析、薄弱环节、备考规划、刷题策略、考频、
+  考试大纲、大纲要求、大纲范围、考纲、2026大纲、大纲变动.
   Also use when the user pastes an exam-style question and asks for analysis,
   solving steps, or error diagnosis — even if they don't explicitly say "考研",
   as long as the question is about CS or math topics in a systematic exam-review style
@@ -104,19 +105,28 @@ description: >-
 
 ## 学科参考资料
 
-根据问题所属学科查阅对应文件，获取详细考纲、高频考点清单和解题模板：
+根据问题所属学科查阅对应文件，获取考纲要求、高频考点清单和解题模板：
 
-### 408专业课
+### 2026考试大纲（权威依据）
+- **`references/2026-408-syllabus.md`** — 408官方考试大纲：考试性质、考察目标、试卷结构、四科完整考察内容
+- **`references/2026-math-one-syllabus.md`** — 数学一官方考试大纲：考试内容和考试要求（高等数学、线性代数、概率论与数理统计）
+
+当用户问到"大纲要求什么"、"这个考不考"、"考纲范围"时，以大纲文件为准。
+
+### 408专业课（考点精析）
 - **`references/data-structures.md`** — 数据结构（45分）：线性表、栈队列、树、图、查找、排序、算法设计
 - **`references/computer-organization.md`** — 计算机组成原理（45分）：数据表示与运算、存储系统、CPU、I/O
 - **`references/operating-systems.md`** — 操作系统（35分）：进程管理、内存管理、文件系统、I/O管理
 - **`references/computer-networks.md`** — 计算机网络（25分）：体系结构、数据链路层、网络层、传输层、应用层
 
-### 数学一
+### 数学一（考点精析）
 - **`references/math-one.md`** — 高等数学（~82分）、线性代数（~34分）、概率论与数理统计（~34分）
 
 ### 解题方法论
 - **`references/problem-solving-patterns.md`** — 答题规范、时间分配策略、各科常见陷阱、错题分析框架
+
+### 考试总览
+- **`references/exam-overview.md`** — 11408考试代码含义、分值分布、推荐资料、复习时间线
 
 ### 教材原文检索（PageIndex）
 
@@ -140,7 +150,8 @@ description: >-
 
 ### 何时查阅参考文件
 
-- 用户问到具体知识点的考频、考纲要求、易错点清单 → 查阅对应学科参考文件
+- 用户问到考纲是否包含某知识点、大纲原文要求 → 查阅对应大纲文件
+- 用户问到具体知识点的考频、易错点清单、解题技巧 → 查阅对应学科考点精析文件
 - 用户需要解题模板或答题格式规范 → 查阅 `problem-solving-patterns.md`
 - 用户问到考试结构、分值分布、推荐资料 → 查阅 `exam-overview.md`
 - 用户问常见的基础概念且你有把握准确回答 → 可以直接回答，不必每次都查阅文件
