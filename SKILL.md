@@ -16,6 +16,9 @@ description: >-
   Also trigger when the user mentions: 考研、408、11408、数学一、专业课、
   真题解析、知识点辨析、错题分析、薄弱环节、备考规划、刷题策略、考频、
   考试大纲、大纲要求、大纲范围、考纲、2026大纲、大纲变动.
+  Also trigger when the user EXPLICITLY asks to save content as a note into their
+  Obsidian vault: 做笔记、记笔记、整理成笔记、记到笔记里、存到Obsidian/ob、
+  写入笔记库、把这个记下来、收错题、沉淀到考研库 — see `references/obsidian-notes.md`.
   Also use when the user pastes an exam-style question and asks for analysis,
   solving steps, or error diagnosis — even if they don't explicitly say "考研",
   as long as the question is about CS or math topics in a systematic exam-review style
@@ -95,6 +98,18 @@ description: >-
 5. 查阅 `references/exam-overview.md` 获取推荐资料和复习时间线
 6. 提醒容易忽略的策略：如选择题速度训练、大题答题规范、模拟考试的重要性
 
+### 模式五：笔记沉淀（写入 Obsidian 笔记库）
+
+**识别信号：** 用户**显式**要求把内容做成笔记、收错题、存进 Obsidian 考研库——"做个笔记/记到笔记里/整理成笔记/存到 ob/收一下这道错题/沉淀到考研库"。
+
+> 普通问答、解题、诊断**不**主动建笔记；只有用户开口要存才写仓库。
+
+**回应方式：**
+1. 先把内容讲清楚/算对（按模式一~三），确认无误后再落库——落库是沉淀已确认的内容。
+2. 按 **`references/obsidian-notes.md`** 操作：用户的 vault 是 iCloud 里的 **27Kaoyan**，内置 Read 工具会 EPERM，**只能用 `obsidian` CLI** 读写。
+3. frontmatter 必须写对（`subject` + `exam_points` 取自 `40_资料/考纲清单.md` + `status/type/tags`），文件放对应学科/题目文件夹；**不要手动改任何索引或总览页**——Bases 视图与考纲覆盖矩阵会按属性自动收录。
+4. 推荐"本地起草 → `obsidian eval` + Node `fs` 推送"避免 shell 转义，写完读回确认、并核对 `unresolvedLinks` 没新增坏链。
+
 ## 难度校准
 
 根据交互中观察到的用户水平，调整讲解深度：
@@ -105,13 +120,18 @@ description: >-
 
 ## 学科参考资料
 
-根据问题所属学科查阅对应文件，获取考纲要求、高频考点清单和解题模板：
+根据问题所属学科查阅对应文件。先用总索引判断考频、题型和答题侧重点，再进入学科文件补充具体知识、公式、算法和易错点。
 
 ### 2026考试大纲（权威依据）
 - **`references/2026-408-syllabus.md`** — 408官方考试大纲：考试性质、考察目标、试卷结构、四科完整考察内容
 - **`references/2026-math-one-syllabus.md`** — 数学一官方考试大纲：考试内容和考试要求（高等数学、线性代数、概率论与数理统计）
 
 当用户问到"大纲要求什么"、"这个考不考"、"考纲范围"时，以大纲文件为准。
+
+### 考点精析总索引（优先入口）
+- **`references/exam-point-analysis.md`** — 11408高频考点总索引：按408四科和数学一三大模块整理“考频/题型/答题动作/易错提醒”，用于快速判断哪些内容要展开、哪些只需点到即止。
+
+当用户问到"哪个更重要"、"这个常考吗"、"怎么复习这个点"、"为什么总错"、"这题考什么"时，优先查这个文件，再按学科进入下面的详细文件。
 
 ### 408专业课（考点精析）
 - **`references/data-structures.md`** — 数据结构（45分）：线性表、栈队列、树、图、查找、排序、算法设计
@@ -127,6 +147,9 @@ description: >-
 
 ### 考试总览
 - **`references/exam-overview.md`** — 11408考试代码含义、分值分布、推荐资料、复习时间线
+
+### 笔记沉淀（写入 Obsidian 库）
+- **`references/obsidian-notes.md`** — 用户显式要求做笔记/收错题/存进 Obsidian 库（vault: 27Kaoyan）时的完整流程：iCloud 访问方式（只能用 `obsidian` CLI）、文件夹与 frontmatter 规范、`exam_points` 取自 `40_资料/考纲清单.md`、本地起草+fs 推送、改名/删除/视图维护的踩坑。
 
 ### 教材原文检索（PageIndex）
 
@@ -151,8 +174,9 @@ description: >-
 ### 何时查阅参考文件
 
 - 用户问到考纲是否包含某知识点、大纲原文要求 → 查阅对应大纲文件
-- 用户问到具体知识点的考频、易错点清单、解题技巧 → 查阅对应学科考点精析文件
+- 用户问到具体知识点的考频、题型优先级、易错点、复习投入产出比 → 先查阅 `exam-point-analysis.md`，再查阅对应学科考点精析文件
 - 用户需要解题模板或答题格式规范 → 查阅 `problem-solving-patterns.md`
 - 用户问到考试结构、分值分布、推荐资料 → 查阅 `exam-overview.md`
+- 用户**显式**要求做笔记 / 收错题 / 存进 Obsidian 库 → 查阅 `obsidian-notes.md`，按流程写入 27Kaoyan vault（普通问答不主动建笔记）
 - 用户问常见的基础概念且你有把握准确回答 → 可以直接回答，不必每次都查阅文件
 - 需要教材原文的精确内容 → 使用 PageIndex MCP 检索教材
