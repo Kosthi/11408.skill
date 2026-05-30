@@ -1,33 +1,17 @@
 ---
-name: 11408
+name: kaoyan-11408
 description: >-
-  考研11408备考辅导skill。覆盖408专业课（数据结构、计算机组成原理、操作系统、计算机网络）
-  和数学一（高等数学、线性代数、概率论与数理统计）。
-  提供知识问答、真题/习题解析、薄弱环节诊断和复习规划。
-  Use this skill when the user asks about:
-  408真题、数据结构考点、计算机组成原理、操作系统PV操作、计算机网络协议、
-  数学一、高等数学、线性代数、概率论与数理统计、
-  排序算法对比、AVL树旋转、图的遍历、最短路径、拓扑排序、散列表、
-  Cache地址映射、流水线冲突、IEEE754浮点数、指令流水线、
-  进程同步互斥、死锁与银行家算法、页面置换算法、
-  TCP拥塞控制、子网划分、滑动窗口协议、
-  极限计算、中值定理证明、二重积分、级数收敛、傅里叶级数、
-  常微分方程、矩阵对角化、特征值特征向量、最大似然估计.
-  Also trigger when the user mentions: 考研、408、11408、数学一、专业课、
-  真题解析、知识点辨析、错题分析、薄弱环节、备考规划、刷题策略、考频、
-  考试大纲、大纲要求、大纲范围、考纲、2026大纲、大纲变动.
-  Also trigger when the user EXPLICITLY asks to save content as a note into their
-  Obsidian vault: 做笔记、记笔记、整理成笔记、记到笔记里、存到Obsidian/ob、
-  写入笔记库、把这个记下来、收错题、沉淀到考研库 — see `references/obsidian-notes.md`.
-  Also use when the user pastes an exam-style question and asks for analysis,
-  solving steps, or error diagnosis — even if they don't explicitly say "考研",
-  as long as the question is about CS or math topics in a systematic exam-review style
-  (e.g., asking about 得分点, 答题规范, 解题套路, or comparing algorithms/concepts
-  in a tabular way typical of exam preparation).
-  Do NOT trigger for: coding/debugging in specific languages (Python, Java, Rust, etc.),
-  undergraduate homework (大二/大三课程作业), other exam systems (GRE, CPA, etc.),
-  real-world engineering tasks (公司网络搭建, 系统部署), or interview preparation.
-  This skill is specifically for 中国研究生入学考试 (Chinese graduate entrance exam) prep.
+  考研11408备考辅导 skill，面向中国研究生入学考试 408 计算机专业基础综合和数学一。Use when
+  the user asks about 408 or 数学一 concepts, syllabus scope, exam frequency,
+  真题/习题解析, 错题分析, 薄弱诊断, 复习规划, 刷题策略, 答题规范, or whether a topic is in the
+  2026 考纲. Covers 数据结构、计算机组成原理、操作系统、计算机网络、高等数学、线性代数、
+  概率论与数理统计. Trigger for topics such as 排序/树/图/查找, Cache/流水线/IEEE754/指令系统,
+  进程同步/死锁/页面置换, TCP/子网/滑动窗口, 极限/中值定理/积分/级数/微分方程/矩阵/特征值/
+  概率统计. Also use when the user pastes an exam-style CS or math question and asks for
+  analysis, solution steps, score points, or error diagnosis. Use for explicit Obsidian
+  note requests like 做笔记、整理成笔记、存到 Obsidian/ob、收错题、沉淀到考研库; follow
+  references/obsidian-notes.md. Do not use for coding/debugging, unrelated undergraduate
+  homework, other exams, interviews, or real-world engineering deployment.
 ---
 
 # 考研11408备考辅导
