@@ -8,7 +8,9 @@ description: >-
   概率论与数理统计. Trigger for topics such as 排序/树/图/查找, Cache/流水线/IEEE754/指令系统,
   进程同步/死锁/页面置换, TCP/子网/滑动窗口, 极限/中值定理/积分/级数/微分方程/矩阵/特征值/
   概率统计. Also use when the user pastes an exam-style CS or math question and asks for
-  analysis, solution steps, score points, or error diagnosis. Use for explicit Obsidian
+  analysis, solution steps, score points, or error diagnosis. Use PageIndex MCP when
+  the user asks for 教材原文、教材检索、教材依据、相关知识点, or when textbook grounding is
+  needed before explaining 408 concepts. Use for explicit Obsidian
   note requests like 做笔记、整理成笔记、存到 Obsidian/ob、收错题、沉淀到考研库; follow
   references/obsidian-notes.md. Do not use for coding/debugging, unrelated undergraduate
   homework, other exams, interviews, or real-world engineering deployment.
@@ -139,16 +141,36 @@ description: >-
 
 通过 PageIndex MCP 可以检索 408 四本教材的原文内容。当用户的问题涉及教材中的具体定义、定理、算法描述或例题时，使用 PageIndex 工具检索相关页面，确保回答与教材原文一致。
 
+如果用户要求“检索教材并输出相关知识点 / 教材依据 / 这段内容关联哪些考点”，不要只摘录原文；要把检索结果转成考研可用的知识点清单。
+
 **使用流程：**
 1. 根据用户问题判断涉及哪本教材
 2. 使用 PageIndex MCP 工具检索相关内容
-3. 结合检索到的教材原文和参考文件中的考点分析来回答
+3. 摘出教材里的关键定义、条件、算法步骤或例题结论
+4. 结合 `references/exam-point-analysis.md` 和对应学科精析文件，输出相关知识点、考频、题型和易错点
+
+**教材检索输出格式：**
+
+```text
+教材依据：
+- <教材/章节/页码或片段定位>：<用自己的话概括，不长篇复制原文>
+
+相关知识点：
+1. <知识点>｜考频：<极高/高/中/低>｜常见题型：<选择/综合应用/算法/计算>
+   - 教材线索：<该知识点在教材中对应的定义/条件/步骤>
+   - 考试动作：<做题时怎么用>
+   - 易错提醒：<1条最关键的边界>
+
+复习建议：
+- <下一步该回到哪类题/哪章练>
+```
 
 **何时使用教材检索：**
 - 用户提出需要精确定义或定理原文的问题
 - 用户质疑某个概念的描述是否与教材一致
 - 需要引用教材中的具体例题或算法伪代码
 - 参考文件中的概要信息不够详细，需要教材原文补充
+- 用户要求“教材检索 / 教材依据 / 相关知识点 / 这段教材对应哪些考点”
 
 **何时不需要检索：**
 - 用户问的是高频考点的对比/总结（参考文件已覆盖）
